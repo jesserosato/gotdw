@@ -1,0 +1,20 @@
+{
+  "name": "datawarehouse",
+  "version": "0.0.0",
+  "authors": [
+    "Jesse Rosato <jesse.rosato@me.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.3.3"
+  }
+}

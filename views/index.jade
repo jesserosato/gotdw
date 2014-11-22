@@ -1,0 +1,53 @@
+extends layout
+
+block content
+    div#container
+        div#title
+            h1. Valar Morghulis
+            h2. A Data Warehouse Project on Character Deaths in <i>A Song of Ice and Fire</i>
+        form(method="get")
+            p
+                | How many
+                select(name="gender")
+                    each gender in form.genders
+                        option(value="#{gender.id}", selected=gender.selected)= gender.name
+                | &nbsp;characters
+                br
+                | aged
+                select(name="age")
+                    each age in form.ages
+                        option(value="#{age.id}", selected=age.selected)= age.name
+                // div.form-group
+                    label(for="affiliation"). Book of Death
+                    select(name="book")
+                        option
+                        each book in formData.books
+                            option(value="book.id")= book.name
+                br
+                | from
+                select(name="region")
+                    each region in form.regions
+                        option(value="#{region.id}", selected=region.selected)= region.name
+                br
+                | who are pledged to&nbsp;
+                select(name="affiliation")
+                    each affiliation in form.affiliations
+                        option(value="#{affiliation.id}", selected=affiliation.selected)= affiliation.name
+                br
+                | and worship&nbsp;
+                select(name="religion")
+                    each religion in form.religions
+                        option(value="#{religion.id}", selected=religion.selected)= religion.name
+                br
+                | are&nbsp;
+                select(name="dead")
+                    each dead in form.deads
+                        option(value="#{dead.id}", selected=dead.selected)= dead.name
+            input(type="hidden", name="submitted", value="1")
+            input(type="submit", value="?", class="submit")
+        if (typeof(results) !== 'undefined')
+            div.results
+                h2= results.length
+                ul
+                    each result in results
+                        li= result.name
