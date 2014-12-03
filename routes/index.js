@@ -15,6 +15,11 @@ var DIMENSIONS = ['religions', 'regions', 'affiliations', 'books'];
 
 /* GET home page. */
 router.get('/', function(req, res) {
+  connection.connect(function(err) {
+    if (err) {
+      res.render('error', { error: err });
+    }
+  });
   var output = { title: title };
   q.all(getFormData())
     .then(function(formData) {
@@ -28,6 +33,7 @@ router.get('/', function(req, res) {
         output.results.bloodiestBook  = results[1].length ? results[1][0].name : null;
         output.results.characters        = results[2];
       }
+      connection.end();
       res.render('index', output);
     }, renderError);
 
