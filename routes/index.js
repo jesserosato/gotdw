@@ -68,13 +68,13 @@ function buildForm(data, query)
 {
   var formData = {};
   formData.religions    = data[0];
-  formData.religions.push({ id: '', name: 'Any' });
+  formData.religions.push({ id: '', name: 'Any', any: true });
   formData.regions      = data[1];
-  formData.regions.push({ id: '', name: 'Any' });
+  formData.regions.push({ id: '', name: 'Any', any: true });
   formData.affiliations = data[2];
-  formData.affiliations.push({ id: '', name: 'Any' });
+  formData.affiliations.push({ id: '', name: 'Any', any: true });
   formData.books        = data[3];
-  formData.books.push({ id: '', name: 'Any' });
+  formData.books.push({ id: '', name: 'Any', any: true });
   formData.genders      = [
     {
       id: 0,
@@ -86,7 +86,8 @@ function buildForm(data, query)
     },
     {
       id: '',
-      name: 'Either'
+      name: 'Either',
+      any: true
     }
   ];
   formData.ages         = [
@@ -120,7 +121,8 @@ function buildForm(data, query)
     },
     {
       id: '',
-      name: 'Any'
+      name: 'Any',
+      any: true
     }
   ];
   formData.deads      = [
@@ -134,7 +136,8 @@ function buildForm(data, query)
     },
     {
       id: '',
-      name: 'Either'
+      name: 'Either',
+      any: true
     }
   ];
   if (query.submitted) {
@@ -144,7 +147,7 @@ function buildForm(data, query)
     formData.books        = setSelected(formData.books, query.book);
     formData.genders      = setSelected(formData.genders, query.gender);
     formData.ages         = setSelected(formData.ages, query.age);
-    formData.dead         = setSelected(formData.deads, query.dead);
+    formData.deads        = setSelected(formData.deads, query.dead);
   }
   return formData;
 }
