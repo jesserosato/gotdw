@@ -72,19 +72,52 @@ input.submit {
     text-align: center;
 }
 
-.results h2 {
+.results h2, h4 {
     font-weight: bold;
-    font-size: 4em;
-    line-height: 2em;
     width: 100%;
     background-color: rgba(255, 255, 255, .5);
     color: #000000;
     margin-bottom: 0;
 }
 
+.results h2 {
+    font-size: 3em;
+    line-height: 1.5em;
+    padding: 1em 2em;
+    box-sizing: border-box;
+}
+
+.results h2 .value {
+    font-weight: 100;
+    white-space: nowrap;
+}
+
+.results h4 {
+    font-size: 2em;
+    line-height: 1em;
+    font-weight: 100;
+    color: #ffffff;
+    margin: 0;
+    padding: 1em 2em;
+    box-sizing: border-box;
+}
+
+.results h4 .value {
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.average-age {
+    background-color: rgba(0, 0, 0, .65);
+}
+
+.bloodiest-book {
+    background-color: rgba(255, 0, 0, .65);
+}
+
 .results ul {
     width: 100%;
-    background-color: rgba(0, 0, 0, .5);
+    background-color: rgba(0, 0, 0, .65);
     list-style-type: none;
     padding: 20px 0;
     margin: 0;
@@ -92,4 +125,9 @@ input.submit {
 
 .results li {
     margin: 10px 0;
+}
+
+.is-dead {
+    color: rgb(255, 0, 0);
+    text-decoration: line-through;
 }

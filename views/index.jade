@@ -17,12 +17,6 @@ block content
                 select(name="age")
                     each age in form.ages
                         option(value="#{age.id}", selected=age.selected)= age.name
-                // div.form-group
-                    label(for="affiliation"). Book of Death
-                    select(name="book")
-                        option
-                        each book in formData.books
-                            option(value="book.id")= book.name
                 br
                 | from
                 select(name="region")
@@ -47,7 +41,44 @@ block content
             input(type="submit", value="?", class="submit")
         if (typeof(results) !== 'undefined')
             div.results
-                h2= results.length
-                ul
-                    each result in results
-                        li= result.name
+                h2.answer
+                    if (results.characters.length == 1)
+                        | There is <span class="value">1</span>
+                    else
+                        | There are <span class="value">#{ results.characters.length }</span>
+                    if (form.genders.selected && form.genders.selected.id)
+                        |  <span class="value">#{ form.genders.selected.name }</span>
+                    if (results.characters.length == 1)
+                        |  character
+                    else
+                        |  characters
+                    if (form.ages.selected && form.ages.selected.id)
+                        |  aged <span class="value">#{ form.ages.selected.name }</span>
+                    if (form.regions.selected && form.regions.selected.id)
+                        |  from <span class="value">#{ form.regions.selected.name }</span>
+                    if (form.affiliations.selected && form.affiliations.selected.id)
+                        |  pledged to <span class="value">#{ form.affiliations.selected.name }</span>
+                    if (form.religions.selected && form.religions.selected.id)
+                        if (results.characters.length == 1)
+                            |  who worships <span class="value">#{ form.religions.selected.name }</span>
+                        else
+                            |  who worship <span class="value">#{ form.religions.selected.name }</span>
+                    if (form.genders.selected && form.genders.selected.id)
+                        if (results.characters.length == 1)
+                            |  and is <span class="value">#{ form.deads.selected.name }</span>
+                        else
+                            |  and are <span class="value">#{ form.deads.selected.name }</span>
+                    | .
+                if (results.averageAge)
+                    h4.average-age
+                        | Their average age is/was <span class="value">#{ results.averageAge }</span> years-old.
+                if (results.bloodiestBook)
+                    h4.bloodiest-book
+                        | <span class="value">#{ results.bloodiestBook }</span> was their bloodiest book.
+                if (results.characters)
+                    ul
+                        each character in results.characters
+                            if (character.is_dead)
+                                li.is-dead #{ character.name }, #{ character.age }
+                            else
+                                li #{ character.name }, #{ character.age }
