@@ -24,7 +24,7 @@ router.get('/', function(req, res) {
     .then(function(results) {
       if (req.query.submitted) {
         output.results                = {};
-        output.results.averageAge     = results[0] ? results[0][0]["AVG(characters.age)"].toString().substr(0, 5) : null;
+        output.results.averageAge     = results[0].length && results[0][0]["AVG(characters.age)"] ? results[0][0]["AVG(characters.age)"].toString().substr(0, 5) : null;
         output.results.bloodiestBook  = results[1].length ? results[1][0].name : null;
         output.results.characters        = results[2];
       }
