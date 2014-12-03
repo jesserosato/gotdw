@@ -5,16 +5,17 @@ var q = require('q');
 var title = 'CSC177 Data Warehouse Project';
 var dotenv = require('dotenv');
 dotenv.load();
-var connection = mysql.createConnection({
-  host     : process.env.DB_HOST,
-  database : process.env.DB_NAME,
-  user     : process.env.DB_USER,
-  password : process.env.DB_PASSWORD
-});
+var connection;
 var DIMENSIONS = ['religions', 'regions', 'affiliations', 'books'];
 
 /* GET home page. */
 router.get('/', function(req, res) {
+  connection = mysql.createConnection({
+    host     : process.env.DB_HOST,
+    database : process.env.DB_NAME,
+    user     : process.env.DB_USER,
+    password : process.env.DB_PASSWORD
+  });
   connection.connect(function(err) {
     if (err) {
       res.render('error', { error: err });
