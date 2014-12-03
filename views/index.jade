@@ -75,7 +75,7 @@ block content
                 if (results.bloodiestBook)
                     h4.bloodiest-book
                         | <span class="value">#{ results.bloodiestBook }</span> was their bloodiest book.
-                if (results.characters)
+                if (results.characters.length)
                     h4.characters They are:
                     ul
                         each character in results.characters
